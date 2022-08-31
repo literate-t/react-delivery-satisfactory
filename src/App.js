@@ -2,14 +2,15 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./component/Login";
 import styled from "@emotion/styled";
 import { Global, css } from "@emotion/react";
+import "./App.css";
 
 const Container = styled.div`
-  background-color: #d0e0ef;
+  background-color: var(--primary);
 `;
 
 function App() {
   return (
-    <Container>
+    <>
       <Global
         styles={css`
           @font-face {
@@ -24,7 +25,7 @@ function App() {
           <Route path="/" element={<Login />} />
         </Routes>
       </Router>
-    </Container>
+    </>
   );
 }
 
