@@ -1,12 +1,11 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./component/Login";
-import styled from "@emotion/styled";
 import { Global, css } from "@emotion/react";
 import "./App.css";
 
-const Container = styled.div`
-  background-color: var(--primary);
-`;
+// const Container = styled.div`
+//   background-color: var(--primary);
+// `;
 
 function App() {
   return (

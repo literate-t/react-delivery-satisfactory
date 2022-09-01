@@ -16,16 +16,6 @@ const DivContainer = styled.div`
   top: 50%;
 `;
 
-const FlexColumnContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: ${(props) =>
-    props.modalClicked ? " #DFDFDE" : "var(--primary)"};
-`;
-
 const FlexContainer = styled.div`
   display: flex;
   margin-top: 1rem;

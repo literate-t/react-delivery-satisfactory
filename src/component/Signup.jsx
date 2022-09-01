@@ -3,6 +3,7 @@ import { ReactComponent as DeleteIcon } from "../asset/delete.svg";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import { useState } from "react";
+import { signUp } from "../api/signApi";
 
 const Modal = styled.div`
   background-color: white;
@@ -97,11 +98,15 @@ const Signup = ({ toggle }) => {
     }
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     if (isValidEmail && isValidPw) {
-      alert("회원가입이 정상적으로 완료되었습니다");
+      const result = await signUp(email, pw);
+      console.log(result);
+      if (result?.status === 200) {
+        alert("회원가입이 정상적으로 완료되었습니다");
+      }
       toggle();
     }
   };
