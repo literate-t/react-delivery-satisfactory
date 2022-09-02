@@ -1,7 +1,7 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login from "./component/Login";
-import { Global, css } from "@emotion/react";
-import "./App.css";
+import { Global, css } from '@emotion/react';
+import { RecoilRoot } from 'recoil';
+import './App.css';
+import Router from './Router';
 
 // const Container = styled.div`
 //   background-color: var(--primary);
@@ -9,22 +9,18 @@ import "./App.css";
 
 function App() {
   return (
-    <>
+    <RecoilRoot>
       <Global
         styles={css`
           @font-face {
-            font-family: "DM Sans";
-            src: url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"),
-              format("woff2");
+            font-family: 'DM Sans';
+            src: url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap'),
+              format('woff2');
           }
         `}
       />
-      <Router>
-        <Routes>
-          <Route path="/" element={<Login />} />
-        </Routes>
-      </Router>
-    </>
+      <Router />
+    </RecoilRoot>
   );
 }
 

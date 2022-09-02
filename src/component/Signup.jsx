@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
-import { ReactComponent as DeleteIcon } from "../asset/delete.svg";
-import styled from "@emotion/styled";
-import { css } from "@emotion/react";
-import { useState } from "react";
-import { signUp } from "../api/signApi";
+import { ReactComponent as DeleteIcon } from '../asset/delete.svg';
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
+import { useState } from 'react';
+import { signUp } from '../api/signApi';
 
 const Modal = styled.div`
   background-color: white;
@@ -62,16 +62,16 @@ const Button = styled.button`
 /* eslint-disable no-useless-escape */
 const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
-const emailGuide = "올바른 주소를 입력하세요";
-const pwGuide = "비번과 일치하지 않습니다";
+const emailGuide = '올바른 주소를 입력하세요';
+const pwGuide = '비번과 일치하지 않습니다';
 
 const Signup = ({ toggle }) => {
   const [isValidEmail, setIsValidEmail] = useState(false);
   const [isValidPw, setIsValidPw] = useState(true);
   const [isFirstInput, setIsFirstInput] = useState(false);
-  const [email, setEmail] = useState("");
-  const [pw, setPw] = useState("");
-  const [confirmPw, setConfirmPw] = useState("");
+  const [email, setEmail] = useState('');
+  const [pw, setPw] = useState('');
+  const [confirmPw, setConfirmPw] = useState('');
 
   const onEmailChange = ({ target: { value } }) => {
     if (!isFirstInput) {
@@ -105,9 +105,14 @@ const Signup = ({ toggle }) => {
       const result = await signUp(email, pw);
       console.log(result);
       if (result?.status === 200) {
-        alert("회원가입이 정상적으로 완료되었습니다");
+        alert('회원가입이 정상적으로 완료되었습니다');
+        toggle();
+      } else {
+        const { message } = result;
+        if (message === 'EMAIL_EXISTS') {
+          alert('이미 존재하는 계정입니다');
+        }
       }
-      toggle();
     }
   };
   return (
