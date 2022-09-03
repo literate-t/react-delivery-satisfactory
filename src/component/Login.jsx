@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { signIn } from '../api/signApi';
 import BackDrop from './BackDrop';
 import Signup from './Signup';
-import { checkSinginState } from '../states';
+import { signinState } from '../states';
 import { useSetRecoilState } from 'recoil';
 
 const DivContainer = styled.div`
@@ -50,7 +50,7 @@ const Button = styled.button`
 const Login = () => {
   const [clicked, setClicked] = useState(false);
   const navigate = useNavigate();
-  const setSigninState = useSetRecoilState(checkSinginState);
+  const setSigninState = useSetRecoilState(signinState);
 
   const toggleClicked = () => {
     setClicked((clicked) => !clicked);
