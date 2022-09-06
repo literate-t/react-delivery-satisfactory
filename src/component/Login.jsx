@@ -1,12 +1,12 @@
-import styled from '@emotion/styled';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import styled from "@emotion/styled";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import { signIn } from '../api/signApi';
-import BackDrop from './BackDrop';
-import Signup from './Signup';
-import { signinState } from '../states';
-import { useSetRecoilState } from 'recoil';
+import { signIn } from "../api/signApi";
+import BackDrop from "./BackDrop";
+import Signup from "./Signup";
+import { signinState } from "../states";
+import { useSetRecoilState } from "recoil";
 
 const DivContainer = styled.div`
   position: relative;
@@ -57,8 +57,8 @@ const Login = () => {
   };
 
   const [account, setAccount] = useState({
-    id: '',
-    password: '',
+    id: "",
+    password: "",
   });
 
   const { id, password } = account;
@@ -68,7 +68,7 @@ const Login = () => {
     console.log(result);
     if (result?.status === 200) {
       const {
-        data: { expiresIn, idToken },
+        data: { expiresIn, idToken, email },
       } = result;
 
       setSigninState({ expireTime: parseInt(expiresIn), idToken });
@@ -77,9 +77,11 @@ const Login = () => {
       //setSessionInfo(result, localStorage);
       //localStorage.setItem('test', 'test');
 
-      navigate('/home');
+      navigate("/home", {
+        state: { email },
+      });
     } else {
-      alert('일치하는 계정이 없습니다');
+      alert("일치하는 계정이 없습니다");
     }
   };
 
@@ -109,7 +111,7 @@ const Login = () => {
           placeholder="PW를 입력하세요"
         />
         <FlexContainer>
-          <Button onClick={onLogin} color={'#EED7CE'}>
+          <Button onClick={onLogin} color={"#EED7CE"}>
             로그인
           </Button>
           <Button onClick={toggleClicked}>회원가입</Button>

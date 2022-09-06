@@ -1,4 +1,4 @@
-import { atom, selector } from 'recoil';
+import { atom } from "recoil";
 
 const localStorageEffect =
   (expireTimeKey, idTokenKey) =>
@@ -6,7 +6,7 @@ const localStorageEffect =
     const time = parseInt(localStorage.getItem(expireTimeKey));
     const token = localStorage.getItem(idTokenKey);
     if (time != null && token != null) {
-      console.log('null');
+      console.log("null");
       setSelf({ expireTime: time, idToken: token });
     }
 
@@ -24,12 +24,12 @@ const localStorageEffect =
   };
 
 export const signinState = atom({
-  key: 'SigninState',
+  key: "SigninState",
   default: {
     expireTime: 0,
-    idToken: '',
+    idToken: "",
   },
-  effects: [localStorageEffect('expireTime', 'idToken')],
+  effects: [localStorageEffect("expireTime", "idToken")],
 });
 
 /**
