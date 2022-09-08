@@ -6,7 +6,8 @@ import { useLocation } from "react-router-dom";
 
 import styled from "@emotion/styled";
 import { useState } from "react";
-import list from "../asset/dongList";
+import buldings from "../asset/buildings";
+import Rooms from "./Rooms";
 
 const FlexContainer = styled.main`
   display: flex;
@@ -21,12 +22,6 @@ const SideBar = styled.div`
   padding: 1rem;
 `;
 
-const Body = styled.div`
-  flex-basis: 0;
-  flex-grow: 999;
-  padding: 1rem;
-  background-color: var(--primary);
-`;
 
 const ItemList = styled.li`
   padding: 0.5rem;
@@ -59,17 +54,21 @@ const Home = () => {
 
   const [user] = useState(email.substring(0, email.indexOf("@")));
 
+  const onClickBuilding = e => {
+
+  }
+
   return (
     <FlexContainer>
       <SideBar>
         {welcomeMessage(user)}
         <ul>
-          {list.map((item) => (
-            <ItemList key={item.id}>{`${item.number}동`}</ItemList>
+          {buldings.map((item) => (
+            <ItemList key={item.id} onClick={onClickBuilding}>{`${item.number}동`}</ItemList>
           ))}
         </ul>
       </SideBar>
-      <Body>body</Body>
+      <Rooms />
     </FlexContainer>
   );
 };
